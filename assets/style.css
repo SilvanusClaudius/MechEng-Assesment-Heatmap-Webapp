@@ -1,0 +1,46 @@
+/*
+Colour palette: 001514 C2D076 FFE1EA FFA0FD E952DE
+*/
+
+#topbanner{ /* This is an id selector */
+  background-color:#710193;
+  color: #FFE1EA;
+  /*margin: 50; */
+  padding: 5px;
+}
+
+body {
+  background-color:#FFFFFF;
+  margin: 0;
+  padding: 25;
+}
+
+#sidebar { /* Putting a star selects all the child elements??*/
+  background-color:#FFF2CC;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right:25px;
+}
+
+#mainbodyarea{
+  margin: 50;
+  padding: 50;
+}
+
+#GraphPane{
+  background-color:#FFFFFF;
+  margin: 50;
+  padding: 50;
+}
+
+.button1 { /* This is a class selector */
+
+  background-color: #4b5052;
+  /*border: 2px solid black; */
+  color: whitesmoke;
+  padding: 0.5em 0.5em;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  display: inline-block;
+}
