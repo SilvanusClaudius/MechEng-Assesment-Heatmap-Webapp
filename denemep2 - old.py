@@ -17,10 +17,11 @@ app = dash.Dash(__name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 # Enable server when deploying?
-#server = app.server
+server = app.server
 
 #For Config URL - ALWAYS put the &download=1 at the back of the URL!
-config_url = "https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemyta_ucl_ac_uk/EdQL2DOzuCtCl9oCZRZ7DnkB-qMKbGCO2yve-4mw234wrw?e=cJ9XgX&download=1"
+config_url = "https://liveuclac-my.sharepoint.com/:x:/g/personal/ucnvlra_ucl_ac_uk/ER6KfG1ItOZHgmFYLAY0Rx0Bkzqy5hk_m5PpWh2jwEafFw?rtime=LS6CAdCX2kg&download=1"
+#config_url = "https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemyta_ucl_ac_uk/EdQL2DOzuCtCl9oCZRZ7DnkB-qMKbGCO2yve-4mw234wrw?e=cJ9XgX&download=1"
 #config_url = "https://liveuclac-my.sharepoint.com/:x:/g/personal/ucnvlra_ucl_ac_uk/ER6KfG1ItOZHgmFYLAY0Rx0Bkzqy5hk_m5PpWh2jwEafFw&download=1"
 config_df = GetAssessmentData.Get_Config_Data(config_url)
 
@@ -67,11 +68,9 @@ def servelayout():
                        style={'margin': '15px'}),
 
                 html.P(''),
-
-                #Removed feature - Master Spread Sheet
-                # html.A(className='button1', children='Download Master Assessment Spreadsheet',
-                #        href='https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemyta_ucl_ac_uk/EchRSDhblL5MtFUDLBiFIVcBlnk-wyaHjWwecrb8CYoPKg?e=qghjcs'
-                #         ),
+                html.A(className='button1', children='Download Master Assessment Spreadsheet',
+                       href='https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemyta_ucl_ac_uk/EchRSDhblL5MtFUDLBiFIVcBlnk-wyaHjWwecrb8CYoPKg?e=qghjcs'
+                        ),
 
                 html.H2("1)"),
                 dcc.Dropdown(id='dropdown-year', options=[
@@ -233,10 +232,6 @@ def update_my_graph(val_chosen):
         print(f"value user chose: {val_chosen}")
         print(type(val_chosen))
         dff = df[df["Module Code "].isin(val_chosen)]
-        #convert DeadlineDate into Date type
-        #dff.astype({'Deadline Date': 'datetime64'}).dtypes
-        dff['Deadline Date'] = pd.to_datetime(dff['Deadline Date'])
-        print("DFF TYPES: ", dff.dtypes)  #Need to make sure deadline dates is a pandas datetime type
         fig = px.scatter(dff, x='Deadline Date', y="Module Code ", size="Assessment Weighting (%)", hover_name="Module Title"
                  , opacity=1,color="Module Title", hover_data=['Module Code ','Assessment Name','Deadline Date',
                                                                'Assessment Weighting (%)',"Assessment Type"])
