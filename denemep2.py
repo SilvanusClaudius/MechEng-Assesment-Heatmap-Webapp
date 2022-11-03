@@ -17,7 +17,7 @@ app = dash.Dash(__name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 # Enable server when deploying?
-#server = app.server
+server = app.server
 
 #For Config URL - ALWAYS put the &download=1 at the back of the URL!
 config_url = "https://liveuclac-my.sharepoint.com/:x:/g/personal/zcemyta_ucl_ac_uk/EdQL2DOzuCtCl9oCZRZ7DnkB-qMKbGCO2yve-4mw234wrw?e=cJ9XgX&download=1"
